@@ -65,7 +65,7 @@ tput cuu1 >&2 && tput dl1 >&2
 
 
 
-permited=$(curl -sSL "https://raw.githubusercontent.com/SNIPER754186/admlatam/refs/heads/main/source/Control-Bot.txt") 
+permited=$(curl -sSL "https://raw.githubusercontent.com/SNIPER754186/botchumopro/refs/heads/LaTamSRC/source/Control-Bot.txt?token=GHSAT0AAAAAADFRDFLODDDTMJDRMCI5ZXQY2CWVMSA") 
 [[ $(echo $permited|grep "$(wget -qO- ifconfig.me)") = "" ]] && {
 rm -rf /etc/SCRIPT
 systemctl disable BotGen-server.service	

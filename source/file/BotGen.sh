@@ -18,7 +18,7 @@ _fecha=`date +%d-%m-%y`
 #_hora=$(printf '%(%D-%H:%M:%S)T') 
 _hora=$(date +"%H:%M:%S") 
 source <(curl -sSL https://raw.githubusercontent.com/SNIPER754186/admlatam/refs/heads/main/source/LICENCE.crt) 
-_globales=$(curl -sSL "https://raw.githubusercontent.com/SNIPER754186/admlatam/refs/heads/main/source/Control-Bot.txt" | cut -d '|' -f1)
+_globales=$(curl -sSL "https://raw.githubusercontent.com/SNIPER754186/botchumopro/refs/heads/LaTamSRC/source/Control-Bot.txt?token=GHSAT0AAAAAADFRDFLODDDTMJDRMCI5ZXQY2CWVMSA" | cut -d '|' -f1)
 
 
 # Importando API
