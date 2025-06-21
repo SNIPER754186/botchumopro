@@ -139,7 +139,25 @@ msg -bar
 #read inst
 #[[ $inst = @(s|S|y|Y) ]] && install_ini
 }
+# --- CONFIGURACIÓN DE FIREWALL PARA ORACLE VPS (UFW) ---
+msg -bar3
+echo -e "Configurando firewall UFW para puertos 81 (Nginx) y 8888 (Keygen)...${c_default}"
+# Instalar UFW si no está presente
+if ! command -v ufw >/dev/null 2>&1; then
+    echo -e "Instalando UFW...${c_default}"
+    apt-get update -y &>/dev/null
+    apt-get install ufw -y &>/dev/null
+fi
 
+# Habilitar UFW si no está activo
+if ! sudo ufw status | grep -q "Status: active"; then
+    echo -e "Habilitando UFW...${c_default}"
+    sudo ufw enable &>/dev/null
+fi
+# Permitir puertos específicos
+sudo ufw allow 81/tcp comment 'Allow Nginx HTTP' &>/dev/null
+sudo ufw allow 8888/tcp comment 'Allow Keygen Server' &>/dev/null
+sudo ufw reload &>/dev/null
 check_ip () {
 MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 MIP2=$(wget -qO- ipv4.icanhazip.com)
